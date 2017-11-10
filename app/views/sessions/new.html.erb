@@ -1,0 +1,10 @@
+<h1>Sign In</h1>
+<% if flash[:alert] %>
+	<p><%= flash[:alert] %></p>
+<% end %>
+<%= form_with url: sessions_path, scope: 'login' do |form| %>
+  <%= form.email_field :email, placeholder: 'E-Mail' %>
+  <%= form.password_field :password, placeholder: 'Password' %>
+  <%= form.submit "Log In" %>
+<% end %>
+
