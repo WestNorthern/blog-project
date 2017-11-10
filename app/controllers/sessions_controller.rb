@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
 
   #shows the login form
   def new
-    #nothing has to be in here
   end
 
   def create
