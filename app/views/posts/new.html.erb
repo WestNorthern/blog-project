@@ -1,0 +1,7 @@
+<h1>Create a New Post</h1>
+<%= form_with model: @post do |f| %>
+	<%= f.text_field :title, placeholder: 'Title' %>
+	<%= f.text_area :content, placeholder: 'Content' %>
+	<input type="hidden" name="user_id" value="<%= @user_id %>">
+	<%= f.submit %>
+<% end %>

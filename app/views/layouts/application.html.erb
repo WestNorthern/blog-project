@@ -9,6 +9,16 @@
   </head>
 
   <body>
+  	<%= link_to "Users Index", users_path %>
+  	<% if user_signed_in? %>
+    	<p>You're logged in as <%= current_user.first_name %></p>
+  		<%= link_to "Log Out", logout_path, method: :delete %>
+  	<% else %>
+    	<%= link_to "New Session", new_session_path %>
+  	<% end %>
+		<%= link_to "New User", new_user_path %>
+
+  	<%= link_to "Posts Index", posts_path %>
     <%= yield %>
   </body>
 </html>
