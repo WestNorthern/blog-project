@@ -32,7 +32,6 @@ class UsersController < ApplicationController
 
 
   def edit
-    @update_welcome = 'You have accessed the update page'
     @user = User.find(params[:id])
   end
 
