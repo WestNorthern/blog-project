@@ -4,18 +4,19 @@ class PostsController < ApplicationController
   
 
   def index
+    @user = current_user
     @posts = Post.all
   end
 
 
   def new
     @post = Post.new
-    @user_id = params[:user_id]
+    @user = current_user 
   end
 
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @post = @user.posts.create(post_params)
     redirect_to @post
   end

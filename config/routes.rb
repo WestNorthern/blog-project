@@ -1,20 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get 'sessions/index'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/update'
-
-  get 'sessions/edit'
-
-  get 'sessions/destroy'
-
-  get 'sessions/show'
-
   get 'home/index'
 
 	resources :users
