@@ -6,19 +6,101 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+    	input[id="search"] {
+				height: 40px !important; 
+  			margin-top: 10px;
+   			border-radius: 10px !important;
+   			cursor: pointer;
+			}
+			.search-input{
+      	background-color: #82b1ff ;
+  			height: 40px !important; 
+  			margin-top: 10px;
+  			border-radius: 10px;
+  			width: 60% !important;
+			}
+			nav .input-field label {
+    		top: -23px;
+    		left: 0;
+    		cursor: pointer;
+			}
+
+			.user-hub {
+				width: 100%;
+			}
+    </style>
   </head>
 
   <body>
-  	<%= link_to "Users Index", users_path %>
+
+  	<ul id="user-dropdown" class="dropdown-content">
+			<li><%= link_to "My Profile", current_user %></li>
+			<li class="divider"></li>
+			<li><%= link_to "Log Out", logout_path, method: :delete %></li>
+		  <li class="divider"></li>
+		  <li><%= link_to "New Post", new_post_path(@user) %></li>
+		</ul>
+	  <div class="navbar-fixed">
+		  <nav class="blue accent-2" >
+		    <div class="nav-wrapper">
+		      <div class="row">
+		        <div class="col s2">
+		          <ul class="left">
+		          <li><a href="#">Logo</a></li>
+		          </ul>
+		        </div>
+		        <div class="col s6">
+		          <form class="search-input">
+		            <div class="input-field">
+		            <input id="search" type="search" />
+		            <label for="search"><i class="material-icons">search</i></label>
+		            </div>
+		          </form>
+		        </div>
+		        <div class="col s4">
+		          <ul class="right">
+		            <% if user_signed_in? %>
+		      				<li>
+		      					<a class="dropdown-button user-hub" href="#!" data-activates="user-dropdown">
+		      						<%= current_user.first_name %>
+		      						<i class="material-icons right">arrow_drop_down</i>
+		      					</a>
+		      				</li>
+		        			<li><%= link_to "Users Index", users_path %></li>
+	        			<% else %>
+	        				<li><%= link_to "Log In", new_session_path %></li>
+	        				<li><%= link_to "Sign Up", new_user_path %></li>
+	        			<% end %>
+		          </ul>
+		        </div>
+		      </div>
+		    </div>
+		  </nav>
+		</div>
+
   	<% if user_signed_in? %>
     	<p>You're logged in as <%= current_user.first_name %></p>
   		<%= link_to "Log Out", logout_path, method: :delete %>
   	<% else %>
     	<%= link_to "Log In", new_session_path %>
+			<%= link_to "Sign Up", new_user_path %>
   	<% end %>
-		<%= link_to "New User", new_user_path %>
 
   	<%= link_to "Posts Index", posts_path %>
-    <%= yield %>
+  	<div class="container">
+    	<%= yield %>
+    </div>
+    <script>
+    	$(function(){
+
+				$(".dropdown-button").dropdown({ hover: false });
+
+				$(".button-collapse").sideNav();
+
+
+			});
+    </script>
   </body>
 </html>

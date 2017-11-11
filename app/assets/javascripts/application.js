@@ -13,3 +13,11 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require materialize
+
+$(function(){
+
+	$(".dropdown-button").dropdown({ hover: false });
+
+});
