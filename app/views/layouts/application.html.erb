@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlogProject</title>
+    <title>Rycipes</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -48,7 +48,7 @@
 		      <div class="row">
 		        <div class="col s2">
 		          <ul class="left">
-		          <li><a href="#">Logo</a></li>
+		          <li><a href="#">Rycipes</a></li>
 		          </ul>
 		        </div>
 		        <div class="col s6">
@@ -80,15 +80,7 @@
 		  </nav>
 		</div>
 
-  	<% if user_signed_in? %>
-    	<p>You're logged in as <%= current_user.first_name %></p>
-  		<%= link_to "Log Out", logout_path, method: :delete %>
-  	<% else %>
-    	<%= link_to "Log In", new_session_path %>
-			<%= link_to "Sign Up", new_user_path %>
-  	<% end %>
-
-  	<%= link_to "Posts Index", posts_path %>
+  	<%= link_to "Browse Recipes", posts_path %>
   	<div class="container">
     	<%= yield %>
     </div>
