@@ -4,6 +4,7 @@
 	<%= form_with model: @post do |f| %>
 		<%= f.text_field :title, placeholder: 'Title' %>
 		<%= f.text_area :content, placeholder: 'Content' %>
+		<%= f.file_field :avatar %>
 		<a class="waves-effect waves-light btn"><%= f.submit %></a>
 	<% end %>
 
