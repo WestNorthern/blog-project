@@ -1,2 +1,11 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="input-field col s6">
+
+	<h1>Edit Recipe</h1>
+	<%= form_with model: @post do |f| %>
+		<%= f.text_field :title, placeholder: 'Title' %>
+		<%= f.text_area :content, placeholder: 'Content' %>
+		<a class="waves-effect waves-light btn"><%= f.submit %></a>
+	<% end %>
+
+</div>
+

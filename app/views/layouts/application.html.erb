@@ -59,11 +59,11 @@
 		            </div>
 		          </form>
 		        </div>
-		        <div class="col s4">
+		        <div class="col">
 		          <ul class="right">
 		            <% if user_signed_in? %>
 		      				<li>
-		      					<a class="dropdown-button user-hub" href="#!" data-activates="user-dropdown">
+		      					<a class="dropdown-button user-hub" href="#!" data-activates="user-dropdown" style="min-width: 130px;">
 		      						<%= current_user.first_name %>
 		      						<i class="material-icons right">arrow_drop_down</i>
 		      					</a>

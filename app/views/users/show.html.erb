@@ -3,3 +3,27 @@
 <%= @user.last_name %>
 <%= link_to "Edit User", edit_user_path(@user) %>
 <%= link_to "New Post", new_post_path(@user) %>
+
+
+
+<% @user.posts.each do |post| %>
+
+	<div class="row">
+  <div class="col s12 m6">
+    <div class="card hoverable">
+      <div class="card-image">
+        <%= image_tag("beet.jpg", :alt => "Copper Beet") %>
+        <span class="card-title"><%= post.title %></span>
+      </div>
+      <div class="card-content">
+        <p class="trunc-recipe"><%= post.content %></p>
+      </div>
+      <div class="card-action">
+        <a href="#"><%= link_to "#{post.user.full_name}", post.user %></a>
+        <a href="#"><%= link_to "Full Recipe", post %></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

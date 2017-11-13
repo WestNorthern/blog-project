@@ -1,7 +1,11 @@
-<h1>Create a New Post</h1>
-<%= form_with model: @post do |f| %>
-	<%= f.text_field :title, placeholder: 'Title' %>
-	<%= f.text_area :content, placeholder: 'Content' %>
-	<input type="hidden" name="user_id" value="<%= @user_id %>">
-	<%= f.submit %>
-<% end %>
+<div class="input-field col s6">
+
+	<h1>Post a New Recipe</h1>
+	<%= form_with model: @post do |f| %>
+		<%= f.text_field :title, placeholder: 'Title' %>
+		<%= f.text_area :content, placeholder: 'Content' %>
+		<input type="hidden" name="user_id" value="<%= @user_id %>">
+		<a class="waves-effect waves-light btn"><%= f.submit %></a>
+	<% end %>
+
+</div>
