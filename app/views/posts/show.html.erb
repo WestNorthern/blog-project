@@ -7,6 +7,7 @@
   </div>
   <div class="card-content">
     <span class="card-title activator grey-text text-darken-4"><%= @post.title %><i class="material-icons right">more_vert</i></span>
+    <small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
     <p><a href="#"><%= link_to "#{@post.user.full_name}", @user %></a></p>
   </div>
   <div class="card-reveal">
@@ -23,3 +24,15 @@
 
 
 <% end %>
+
+
+<h3>Comments</h3>
+
+<%= form_for [@post, Comment.new] do |f| %>
+<%= f.text_area :body, placeholder: "Add a comment" %><br/>
+<%= f.submit "Add Comment" %>
+<% end %>
+
+<ul>
+  <%= render(partial: 'comments/comment', collection: @post.comments) %>
+</ul>
