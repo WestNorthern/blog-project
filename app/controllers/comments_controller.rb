@@ -6,13 +6,17 @@ before_action :find_commentable
     end
 
     def create
-      @comment = @commentable.comments.new comment_params
+      @comment = @commentable.comments.create comment_params
 
-      if @comment.save
-        redirect_to :back, notice: 'Your comment was successfully posted!'
-      else
-        redirect_to :back, notice: "Your comment wasn't posted!"
-      end
+      redirect_back(fallback_location: root_path)
+    end
+
+    def destroy
+      puts "This is the comment"
+      @post = Post.find(params[:post_id])
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+      redirect_to @post
     end
 
     private

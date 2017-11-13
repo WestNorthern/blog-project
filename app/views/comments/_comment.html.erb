@@ -3,9 +3,10 @@
   <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
 
   <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
-      <% end %>
+    <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+    <%= f.submit "Reply"  %> 
+  <% end %>
+<%= link_to "Delete Comment", post_comment_path(@post.id, comment), method: :delete, class: "waves-effect waves-light btn" %>
 
   <ul>
       <%= render partial: 'comments/comment', collection: comment.comments %>
