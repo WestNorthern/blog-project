@@ -12,11 +12,16 @@ before_action :find_commentable
     end
 
     def destroy
-      puts "This is the comment"
       @post = Post.find(params[:post_id])
       @comment = Comment.find(params[:id])
-      @comment.destroy
-      redirect_to @post
+
+      respond_to do |format|
+        
+        @comment.destroy
+        redirect_to @post
+        format.js
+      # format.html { redirect_to users_path }
+      end
     end
 
     private

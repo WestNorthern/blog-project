@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @posts = Post.all
+    @post = Post.new
   end
 
 
@@ -16,11 +17,18 @@ class PostsController < ApplicationController
 
 
   def create
-    @user = current_user
-    @post = @user.posts.create(post_params)
-    redirect_to @post
+    respond_to do |format|
+      @user = current_user
+      @post = @user.posts.create(post_params)
+      format.js
+    end
   end
 
+  # def create
+  #   @user = current_user
+  #   @post = @user.posts.create(post_params)
+  #   redirect_to @post
+  # end
 
   def show
     @user = User.find_by(id: params[:user_id])

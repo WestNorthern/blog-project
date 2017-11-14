@@ -1,0 +1,5 @@
+<%= form_with model: @post, id: "new-post" do |f| %>
+<%= f.text_field :title, placeholder: 'Title', class: "title" %>
+<%= f.text_field :content, placeholder: 'Content' %>
+<%= f.submit %>
+<% end %>
