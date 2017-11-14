@@ -16,13 +16,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.save
-      flash[:notice] = 'Your account was successfully created'
-      redirect_to @user
-    else
-      flash[:alert] = 'Your account did not get created'
-      redirect_to new_user_path
-    end
+    session[:user_id] = @user.id
+    redirect_to @user
   end
 
 
@@ -37,6 +32,7 @@ class UsersController < ApplicationController
 
 
   def update
+    p user_params
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to @user
@@ -54,7 +50,7 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar, :bio)
   end
 
 end

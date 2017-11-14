@@ -4,7 +4,9 @@
 	<%= f.text_field :first_name, placeholder: 'First Name'%>
 	<%= f.text_field :last_name, placeholder: 'Last Name' %>
 	<%= f.text_field :email, placeholder: 'E-Mail' %>
+	<%= f.text_area :bio, placeholder: 'Tell us about yourself...' %>
 	<%= f.password_field :password, placeholder: 'Password' %>
 	<%= f.file_field :avatar %>
-	<%= f.submit %>
+	<a class="waves-effect waves-light btn"><%= f.submit %></a>
+	
 <% end %>

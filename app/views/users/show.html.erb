@@ -1,18 +1,31 @@
-<h1>Profile</h1>
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="col s12 m7">
+  <h2 class="header"><%= @user.first_name %> <%= @user.last_name %></h2>
+  <div class="card horizontal">
+    <div class="card-image">
+      <%= image_tag @user.avatar.url %>
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <%= @user.bio %>
+      </div>
+      <div class="card-action">
+        <% if @user == current_user %>
 
-<%= image_tag @user.avatar.url %>
+					<%= link_to "Edit User", edit_user_path(@user) %>
+					<%= link_to "New Post", new_post_path(@user) %>
 
-<% if @user == current_user %>
-
-<%= link_to "Edit User", edit_user_path(@user) %>
-<%= link_to "New Post", new_post_path(@user) %>
-
-<% end %>
+				<% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <br>
 <hr>
 <br>
+<br>
+
+
 
 
 
@@ -22,11 +35,11 @@
   <div class="col s12 m6">
     <div class="card hoverable">
       <div class="card-image">
-        <%= image_tag @user.avatar.url %>
+        <%= image_tag post.avatar.url %>
         <span class="card-title"><%= post.title %></span>
       </div>
       <div class="card-content">
-        <p class="trunc-recipe"><%= post.content %></p>
+        <p class="trunc-recipe"><%= post.content.truncate(40, omission: ' . . .') %></p>
       </div>
       <div class="card-action">
         <a href="#"><%= link_to "#{post.user.full_name}", post.user %></a>
