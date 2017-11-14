@@ -59,16 +59,16 @@
 		            </div>
 		          </form>
 		        </div>
-		        <div class="col">
+		        <div class="col s4">
 		          <ul class="right">
 		            <% if user_signed_in? %>
 		      				<li>
 		      					<a class="dropdown-button user-hub" href="#!" data-activates="user-dropdown" style="min-width: 130px;">
 		      						<%= current_user.first_name %>
+		      						<%= current_user.last_name %>
 		      						<i class="material-icons right">arrow_drop_down</i>
 		      					</a>
 		      				</li>
-		        			<li><%= link_to "Users Index", users_path %></li>
 	        			<% else %>
 	        				<li><%= link_to "Log In", new_session_path %></li>
 	        				<li><%= link_to "Sign Up", new_user_path %></li>
