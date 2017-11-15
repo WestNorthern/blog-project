@@ -3,26 +3,36 @@ before_action :find_commentable
 
     def new
       @comment = Comment.new
+      @user = current_user
     end
 
     def create
-      @comment = @commentable.comments.create comment_params
 
-      redirect_back(fallback_location: root_path)
+      @user = current_user
+      @post = @commentable
+
+      respond_to do |format|
+        @comment = @commentable.comments.create comment_params     
+        format.js
+      end
     end
 
     def destroy
-      puts "This is the comment"
       @post = Post.find(params[:post_id])
       @comment = Comment.find(params[:id])
-      @comment.destroy
-      redirect_to @post
+
+      respond_to do |format|
+        
+        @comment.destroy
+        format.js
+      # format.html { redirect_to users_path }
+      end
     end
 
     private
 
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :user_id, :user_name)
     end
 
     def find_commentable

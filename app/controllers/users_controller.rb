@@ -41,8 +41,14 @@ class UsersController < ApplicationController
 
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to users_path
+    respond_to do |format|
+      User.find(params[:id]).destroy
+      format.js
+      # format.html { redirect_to users_path }
+      
+    end
+    
+    session[:user_id] = nil
   end
 
 
