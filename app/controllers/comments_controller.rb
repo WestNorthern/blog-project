@@ -7,13 +7,11 @@ before_action :find_commentable
     end
 
     def create
-      @post = Post.find(params[:post_id])
-      
+      @post = @commentable
       respond_to do |format|
-        
-        @comment = @commentable.comments.create comment_params
-      
-      format.html { redirect_to @post }
+        p format
+          @comment = @commentable.comments.create comment_params     
+        format.js
       end
     end
 
