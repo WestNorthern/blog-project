@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   # end
 
   def show
+    @recipe_author = current_user
     @user = current_user
     @post = Post.find(params[:id])
   end

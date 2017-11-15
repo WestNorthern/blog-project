@@ -7,10 +7,12 @@ before_action :find_commentable
     end
 
     def create
+
+      @user = current_user
       @post = @commentable
+
       respond_to do |format|
-        p format
-          @comment = @commentable.comments.create comment_params     
+        @comment = @commentable.comments.create comment_params     
         format.js
       end
     end
@@ -30,7 +32,7 @@ before_action :find_commentable
     private
 
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :user_id, :user_name)
     end
 
     def find_commentable
