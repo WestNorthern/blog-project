@@ -16,13 +16,29 @@ class PostsController < ApplicationController
   end
 
 
+  # def create
+  #   respond_to do |format|
+  #     @user = current_user
+  #     @post = @user.posts.create(post_params)
+  #     format.js
+  #   end
+  # end
+
   def create
+
+    @user = current_user
+    @post = @user.posts.create(post_params)
+
     respond_to do |format|
-      @user = current_user
-      @post = @user.posts.create(post_params)
-      format.js
+      if @post.save
+        format.html { redirect_to @post, notice: 'New recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.js
+      end
     end
   end
+
 
   # def create
   #   @user = current_user

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 
   before_action :authenticate, only: [:edit, :update, :destroy]
+  
 
 
   def index
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
   def update
     p user_params
     @user = User.find(params[:id])
+    params[:user].delete(:password) if params[:user][:password].blank?
     @user.update(user_params)
     redirect_to @user
 

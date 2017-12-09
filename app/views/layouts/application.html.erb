@@ -68,7 +68,6 @@
 		      
 		      						<i class="material-icons right">arrow_drop_down</i>
 		      					</a>
-		      					<li> <%= link_to "Index", users_path %></li>
 		      				</li>
 	        			<% else %>
 	        				<li><%= link_to "Log In", new_session_path %></li>
@@ -80,8 +79,12 @@
 		    </div>
 		  </nav>
 		</div>
-
-  	<%= link_to "Browse Recipes", posts_path %>
+			<div class="sub-nav">
+				<%= link_to "Browse Users", users_path %>
+				|||||||||||
+		  	<%= link_to "Browse Recipes", posts_path %>
+  		</div>
+		
   	<div class="container">
     	<%= yield %>
     </div>
