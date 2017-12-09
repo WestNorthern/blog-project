@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   belongs_to :user
   has_many :comments, as: :commentable
+  validates :title, :content, :avatar, :presence => true
 end

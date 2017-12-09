@@ -11,8 +11,9 @@
       <div class="card-action">
         <% if @user == current_user %>
 
-					<%= link_to "Edit User", edit_user_path(@user) %>
-					<%= link_to "New Post", new_post_path(@user) %>
+					<%= link_to "Edit Your Profile", edit_user_path(@user) %>
+          
+					<%= link_to "Post A New Recipe!", new_post_path(@user) %>
 
 				<% end %>
       </div>

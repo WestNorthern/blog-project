@@ -33,6 +33,7 @@
     <div class="card-panel deep-purple darken-3">
       <span class="white-text">
       	<%= form_for [@post, Comment.new], scope: 'comment', remote: true do |f| %>
+        <p>kjhasdf</p>
       		<%= f.hidden_field :user_id, value: @user.id %>
       		<%= f.hidden_field :user_name, value: @user.full_name %>
 					<%= f.text_area :body, placeholder: "Add a comment" %><br/><br/>
